@@ -2,8 +2,8 @@
 #ifndef PROJECT_VERSION_H
 #define PROJECT_VERSION_H
 
-#define GIT_VERSION "unknown"
-#define FIRMWARE_VERSION "v0.0.0-unknown"
-#define DATETIME_VERSION "2026-06-30@17:24:36"
+#define GIT_VERSION "dfd9b45"
+#define FIRMWARE_VERSION "v1.0.0"
+#define DATETIME_VERSION "2026-06-30@17:31:16"
 
 #endif // PROJECT_VERSION_H
