@@ -58,9 +58,9 @@ def generate_version_header(*args, **kwargs):
 #ifndef PROJECT_VERSION_H
 #define PROJECT_VERSION_H
 
-#define GIT_VERSION "{version}"
-#define FIRMWARE_VERSION "{firmware}"
-#define DATETIME_VERSION "{now}"
+#define LG_GIT_VERSION "{version}"
+#define LG_FIRMWARE_VERSION "{firmware}"
+#define LG_DATETIME_VERSION "{now}"
 
 #endif // PROJECT_VERSION_H
 """

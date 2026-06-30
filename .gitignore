@@ -3,6 +3,7 @@ secret.*
 
 # ignore slink to examples
 include/main_msgs.hpp
+include/msgs.hpp
 src/main.cpp
 
 # python stuff

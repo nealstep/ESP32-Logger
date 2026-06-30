@@ -39,7 +39,8 @@ void updateM5(void) { M5.update(); }
 
 void loop(void) {
     if (Global::loop_counter > Config::loop_interval) {
-        LOG_N(Log::Uni::Main, Log::Sev::Inf, Log::Note::LoopedN, Global::loop_counter);
+        LOG_N(Log::Uni::Main, Log::Sev::Inf, Log::Note::LoopedN,
+              Global::loop_counter);
         Global::loop_counter = 0;
     }
 #ifdef IS_M5

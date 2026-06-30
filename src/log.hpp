@@ -1,6 +1,6 @@
 #pragma once
 
-#include "log_msgs.hpp"
+#include "msgs.hpp"
 #include "version.h"
 
 #ifdef ARDUINO
@@ -26,9 +26,9 @@ class Log {
     class Version {
        public:
         static constexpr const char* const module = "ESP32-Logger";
-        static constexpr const char* const git_version = GIT_VERSION;
-        static constexpr const char* const firmware_version = FIRMWARE_VERSION;
-        static constexpr const char* const build_time = DATETIME_VERSION;
+        static constexpr const char* const git_version = LG_GIT_VERSION;
+        static constexpr const char* const firmware_version = LG_FIRMWARE_VERSION;
+        static constexpr const char* const build_time = LG_DATETIME_VERSION;
     };
 
     class Config {
