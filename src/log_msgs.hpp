@@ -6,6 +6,9 @@
     X(NoError, "No Error") \
     X(UnexpectedError, "Unexpected Error")
 
-#define BASE_NOTICE_LIST(X) X(NoNotice, "No Notice")
+#define BASE_NOTICE_LIST(X)  \
+    X(NoNotice, "No Notice") \
+    X(Create, "Create")      \
+    X(Destroy, "Destroy")
 
 #define BASE_WORD_LIST(X) X(Unknown, "Unknown")

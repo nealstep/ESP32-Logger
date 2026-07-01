@@ -27,7 +27,8 @@ class Log {
        public:
         static constexpr const char* const module = "ESP32-Logger";
         static constexpr const char* const git_version = LG_GIT_VERSION;
-        static constexpr const char* const firmware_version = LG_FIRMWARE_VERSION;
+        static constexpr const char* const firmware_version =
+            LG_FIRMWARE_VERSION;
         static constexpr const char* const build_time = LG_DATETIME_VERSION;
     };
 
@@ -52,8 +53,15 @@ class Log {
     enum class Sev : uint8_t { SEVERITY_LIST(GENERATE_ENUM) Count };
     enum class Err : uint16_t { ERROR_LIST(GENERATE_ENUM) Count };
     enum class Note : uint16_t { NOTICE_LIST(GENERATE_ENUM) Count };
-    enum class Word : uint16_t { WORD_LIST(GENERATE_ENUM) Count };
 #undef GENERATE_ENUM
+
+    class Word {
+       public:
+#define AS_CONSTCHAR(name, string) \
+    static constexpr const char* const name = string;
+        WORD_LIST(AS_CONSTCHAR)
+    };
+#undef AS_CONSTCHAR
 
 #define GENERATE_STRING(id, msg) msg,
     static constexpr const char* const Units[] = {"Unamed",
@@ -63,7 +71,6 @@ class Log {
     static constexpr const char* const Errors[] = {ERROR_LIST(GENERATE_STRING)};
     static constexpr const char* const Notices[] = {
         NOTICE_LIST(GENERATE_STRING)};
-    static constexpr const char* const Words[] = {WORD_LIST(GENERATE_STRING)};
 #undef GENERATE_STRING
 
     // lazy singleton
@@ -80,7 +87,7 @@ class Log {
         if (un == 0) return Units[0];
         uint8_t bit = __builtin_ctz(un);
         if (bit >= max_unit) {
-            return get_message(Word::Unknown);
+            return Word::Unknown;
         }
         return Units[bit + 1];
     }
@@ -92,9 +99,6 @@ class Log {
     }
     constexpr const char* get_message(Note code) {
         return Notices[static_cast<uint16_t>(code)];
-    }
-    constexpr const char* get_message(Word code) {
-        return Words[static_cast<uint16_t>(code)];
     }
 
     bool inCode(Uni item, Uni code) {
