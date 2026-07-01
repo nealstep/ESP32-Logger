@@ -73,7 +73,7 @@ void test(void) {
         }
         Global::loop_counter++;
     }
-    LOG_E(Log::Err::UnexpectedError);
+    LOG_E(Log::Uni::Main, Log::Err::UnexpectedError);
     LOG(Log::Uni::Main, Log::Sev::Wrn, "A test %d", 45);
     std::cout << "loops: " << Global::loop_counter << std::endl;
     std::cout << "times: " << times << std::endl;
@@ -108,21 +108,21 @@ void log_output_impl(const char* str, bool error, bool truncated) {
 #ifdef LOG_SERIAL
         LOG_SERIAL.printf("Format!: %s\n", str);
 #elifdef LOG_STDERR
-        std::cerr << "Format!: " << str << std::endl;
+        std::cout << "Format!: " << str << std::endl;
 #endif  // LOG_SERIAL LOG_STDERR
     } else if (truncated) {
         // the line got truncated
 #ifdef LOG_SERIAL
         LOG_SERIAL.printf("Trunc!: %s\n", str);
 #elifdef LOG_STDERR
-        std::cerr << "Trunc!: " << str << std::endl;
+        std::cout << "Trunc!: " << str << std::endl;
 #endif  // LOG_SERIAL LOG_STDERR
     } else {
         // all is good
 #ifdef LOG_SERIAL
         LOG_SERIAL.println(str);
 #elifdef LOG_STDERR
-        std::cerr << str << std::endl;
+        std::cout << str << std::endl;
 #endif  // LOG_SERIAL LOG_STDERR
     }
 }

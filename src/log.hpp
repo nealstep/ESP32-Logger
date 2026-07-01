@@ -149,10 +149,10 @@ class Log {
         va_end(args);
     }
 
-    void log_error_impl(const char* file, int line, Err code, ...) {
+    void log_error_impl(const char* file, int line, Uni unit, Err code, ...) {
         va_list(args);
         va_start(args, code);
-        vlog_impl(file, line, Uni::Unnamed, Sev::Err, get_message(code), args);
+        vlog_impl(file, line, unit, Sev::Err, get_message(code), args);
         va_end(args);
     }
 
@@ -187,5 +187,5 @@ static Log& lg = Log::getInstance();
     lg.log_impl(__FILE__, __LINE__, unit, svr, fmt, ##__VA_ARGS__)
 #define LOG_N(unit, svr, code, ...) \
     lg.log_notice_impl(__FILE__, __LINE__, unit, svr, code, ##__VA_ARGS__)
-#define LOG_E(code, ...) \
-    lg.log_error_impl(__FILE__, __LINE__, code, ##__VA_ARGS__)
+#define LOG_E(unit, code, ...) \
+    lg.log_error_impl(__FILE__, __LINE__, unit, code, ##__VA_ARGS__)
