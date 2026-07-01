@@ -55,14 +55,14 @@ def generate_version_header(*args, **kwargs):
     version_file = pjoin(src_dir, "version.h")
 
     new_content = f"""// AUTO GENERATED FILE, DO NOT EDIT
-#ifndef PROJECT_VERSION_H
-#define PROJECT_VERSION_H
+#ifndef LG_PROJECT_VERSION_H
+#define LG_PROJECT_VERSION_H
 
 #define LG_GIT_VERSION "{version}"
 #define LG_FIRMWARE_VERSION "{firmware}"
 #define LG_DATETIME_VERSION "{now}"
 
-#endif // PROJECT_VERSION_H
+#endif // LG_PROJECT_VERSION_H
 """
 
     # Only write the file if it doesn't exist or the content has changed
